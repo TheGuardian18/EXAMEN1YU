@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: yqq-registry-servicio
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:http://quispe:benito@localhost:7070

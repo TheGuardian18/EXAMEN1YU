@@ -1,0 +1,31 @@
+server:
+  port: 8085
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: yqq-libro-service   #comentario
+          uri: lb://yqq-libro-service
+          predicates:
+            - Path=/libros/**
+
+        - id: yqq-usuario-service
+          uri: lb://yqq-usuario-service
+          predicates:
+            - Path=/usuarios/**
+
+        - id: yqq-prestamo-service
+          uri: lb://yqq-prestamo-service
+          predicates:
+            - Path=/prestamos/**
